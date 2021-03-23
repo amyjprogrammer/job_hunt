@@ -6,7 +6,8 @@ from .forms import JobHuntForm
 # Create your views here.
 """home page"""
 def home(request):
-    context = {}
+    job_hunt = JobHunt.objects.all()
+    context = {'job_hunt': job_hunt}
     return render(request, 'job_hunt/home.html', context)
 
 def add_job_hunt(request):
@@ -40,3 +41,12 @@ def edit_job_hunt(request, hunt_id):
 
     context = {'edit_form': edit_form, 'job_hunting': job_hunting}
     return render(request, 'job_hunt/edit_job_hunt.html', context)
+
+def delete_job(request, job_id):
+    """Deleting Job"""
+    job_hunt = get_object_or_404(JobHunt, id=job_id)
+
+    if request.method == "POST":
+        job_hunt.delete()
+        context={'job_hunt': job_hunt}
+        return redirect('job_hunt:home')

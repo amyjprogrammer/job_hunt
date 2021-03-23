@@ -7,6 +7,67 @@
 {% endblock title %}
 
 {% block content %}
-  <h3>Under Construction</h3>
+{% if job_hunt %}
+
+  <div class="card border-dark mb-4">
+    <div class="card-header p-2 ">
+      <a href="{% url 'job_hunt:add_job_hunt' %}" class="btn btn-primary">Add job</a>
+    </div>
+
+
+    <div class="card-body">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Company Name</th>
+            <th>Date Applied</th>
+            <th>Role</th>
+            <th>What Site</th>
+            <th>Reject Email</th>
+            <th>Interview</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        {% for job in job_hunt %}
+        <tbody>
+          <tr>
+            <td>{{ job.company_name }}</td>
+            <td>{{ job.date_applied }}</td>
+            <td>{{ job.role }}</td>
+            <td>{{ job.applied_on }}</td>
+            <td>{{ job.reject_email }}</td>
+            <td>{{ job.interview }}</td>
+            <td>
+              <a href="{% url 'job_hunt:edit_job_hunt' job.id %}">Edit</a>
+            </td>
+            <td>
+              <form action="{% url 'job_hunt:delete_job' job.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-sm btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+
+
+
+{% else %}
+<div class="card border-primary">
+  <div class="card-body pt-4">
+    <h2>No job information added yet</h2>
+    <br>
+    <a href="{% url 'hours:project_worked' %}" class="btn btn-success">Add Project</a>
+  </div>
+</div>
+
+{% endif %}
 
 {% endblock content %}
