@@ -1,4 +1,4 @@
-"# job_hunt"
+*****Under Construction*****
 
 SRS Document for Job Hunt
 
@@ -18,4 +18,4 @@ Specs:
 -Python 3.8
 -Bootstrap 4
 -Postgres
--Rest Framework
+
