@@ -1,5 +1,3 @@
-*****Under Construction*****
-
 SRS Document for Job Hunt
 
 Intro- app to help keep track of a Job Hunt including companies you applied, dates and outcomes
@@ -18,4 +16,3 @@ Specs:
 -Python 3.8
 -Bootstrap 4
 -Postgres
-

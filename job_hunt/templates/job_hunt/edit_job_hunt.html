@@ -13,11 +13,12 @@
     <a class="btn btn-primary" href="{% url 'job_hunt:home' %}">Home</a>
     <a class="btn btn-success" href="{% url 'job_hunt:add_job_hunt' %}">Add Job</a>
   </div>
-  <div class="card-body mb-2 pt-4">
+  <div class="card-body pt-4">
     <form action="{% url 'job_hunt:edit_job_hunt' job_hunting.id %}" method="post">
       {% csrf_token %}
       {{ edit_form|crispy }}
       <button type="submit" class="btn btn-primary">Edit</button>
+      <br>
     </form>
   </div>
 </div>
